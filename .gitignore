@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: Copyright © 2026 Idiap Research Institute <contact@idiap.ch>
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+.idea/
+
+# Licensed corpora: never commit transcripts or anything derived from them
+data/
+# Trained models and experiment outputs
+models/
+exp/
+*.sqlite3
+*.log

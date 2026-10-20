@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: Copyright © 2026 Idiap Research Institute <contact@idiap.ch>
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# Versions of the environment the paper's experiments ran in (Python 3.12).
+torch==2.3.1
+numpy==1.26.4
+scipy==1.13.1
+scikit-learn==1.6.0
+pandas==2.2.3
+gensim==4.3.3
+nltk==3.9.1
+optuna==4.5.0
+pyyaml
+matplotlib==3.10.0
+tqdm==4.67.1
+# BERTopic topic model
+bertopic==0.17.3
+sentence-transformers==5.1.2
+umap-learn==0.5.7
+hdbscan==0.8.40
+# Transformer baselines
+transformers==4.45.2
+accelerate==1.11.0

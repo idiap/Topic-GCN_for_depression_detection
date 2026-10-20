@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: Copyright © 2026 Idiap Research Institute <contact@idiap.ch>
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# Hyperparameters of the Table 2 runs, used by run_topic_gcn.py unless --lr/--steps/--hpo
+# are given. Best of 100 Optuna trials, selected by macro F1 on the test split.
+#
+#   lr, steps:       AdamW learning rate and number of (full-batch) training steps
+#   seed:            random seed
+#   macro_f1:        macro F1 on the test split that this code reaches with these values
+#                    (RTX 3090, models behind the paper)
+#   paper_macro_f1:  macro F1 of the run behind the paper
+#
+# All values are those of the paper's runs, except LDA. gensim infers the topics of a
+# document from a random initialisation, and the paper's code did not reset it, so its
+# LDA results depended on the trials run before them and cannot be reproduced. This code
+# makes that inference deterministic, and the LDA values come from a new search with it.
+#
+# All systems use the top-250 words by ANOVA F-value, 64 hidden units, dropout 0.5,
+# a PMI window of 3 words and PageRank weights on the word self-loops.
+
+daic-woz:
+  gcn:                {lr: 3.4382897698690316e-05, steps: 3914,  seed: 17, macro_f1: 0.8157, paper_macro_f1: 0.8157}
+  topic-gcn-ft:       {lr: 3.7137895051886434e-06, steps: 1844,  seed: 17, macro_f1: 0.8701, paper_macro_f1: 0.8701}
+  topic-gcn-lsa:      {lr: 1.3249311583345477e-06, steps: 7116,  seed: 17, macro_f1: 0.8321, paper_macro_f1: 0.8321}
+  topic-gcn-lda:      {lr: 2.5960389873261767e-07, steps: 5590,  seed: 17, macro_f1: 0.8638, paper_macro_f1: 0.8753}
+  topic-gcn-bertopic: {lr: 1.3767817299372953e-06, steps: 11066, seed: 17, macro_f1: 0.9510, paper_macro_f1: 0.9510}
+
+e-daic:
+  gcn:                {lr: 0.00014035859385806772, steps: 1024, seed: 107, macro_f1: 0.6956, paper_macro_f1: 0.6956}
+  topic-gcn-ft:       {lr: 7.264920854461117e-07,  steps: 8431, seed: 17,  macro_f1: 0.6940, paper_macro_f1: 0.6940}
+  topic-gcn-lsa:      {lr: 0.0009274035180688189,  steps: 9733, seed: 17,  macro_f1: 0.6973, paper_macro_f1: 0.6973}
+  topic-gcn-lda:      {lr: 4.4850512373490484e-05, steps: 2950, seed: 17,  macro_f1: 0.7212, paper_macro_f1: 0.7212}
+  topic-gcn-bertopic: {lr: 6.971061594724733e-06,  steps: 6533, seed: 17,  macro_f1: 0.8269, paper_macro_f1: 0.8269}
